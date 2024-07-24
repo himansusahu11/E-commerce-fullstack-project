@@ -24,7 +24,9 @@ const AppRoutes = () => {
     <Router>
       {user && Object.keys(user).length ? (
         <Header categories={categories?.data} isLoading={isLoading} />
-      ) : null}
+      ) : (
+        <></>
+      )}
 
       <Routes>
         <Route path="/products/:categoryName" element={<ProductListing />} />
