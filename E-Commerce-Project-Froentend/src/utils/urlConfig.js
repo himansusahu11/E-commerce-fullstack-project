@@ -1,5 +1,5 @@
 // all the routes over here
-const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3001";
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5050";
 console.log(import.meta.env);
 const urlConfig = {
   CATEGORIES_URL: BASE_URL + "/api/product/categories",
