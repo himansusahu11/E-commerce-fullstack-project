@@ -15,6 +15,7 @@ const AppRoutes = () => {
     isLoading,
   } = useFetchData("http://localhost:5050/api/product/categories", [], true);
   const { user } = useAuth();
+  console.log(user);
 
   console.log("Fetched categories: ", categories);
   console.log("Loading state: ", isLoading);

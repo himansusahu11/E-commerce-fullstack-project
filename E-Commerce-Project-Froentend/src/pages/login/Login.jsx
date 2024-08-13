@@ -31,6 +31,7 @@ function Login() {
       const data = resp.data;
       console.log(resp);
       console.log(data);
+
       // const token = data.JWT;
       // document.cookie = JWT=${token}; path=/; secure; httponly;
 
