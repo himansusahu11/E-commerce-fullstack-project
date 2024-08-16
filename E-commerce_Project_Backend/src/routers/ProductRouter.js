@@ -24,7 +24,7 @@ const getProductCategories = async (req, res) => {
 };
 
 /***********products***********/
-
+ProductRouter.get("/categories", getProductCategories);
 ProductRouter.use(protectRouteMiddleWare);
 ProductRouter.post(
   "/",
@@ -35,7 +35,6 @@ ProductRouter.post(
 );
 
 ProductRouter.get("/", getAllProductHandler);
-ProductRouter.get("/categories", getProductCategories);
 ProductRouter.get("/:id", getProductById);
 ProductRouter.put(
   "/:id",
