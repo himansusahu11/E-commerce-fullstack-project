@@ -13,13 +13,11 @@ const AppRoutes = () => {
     data: categories,
     error,
     isLoading,
-  } = useFetchData("http://localhost:5050/api/product/categories", [], true);
+  } = useFetchData("http://localhost:5050/api/product/categories", []);
   const { user } = useAuth();
   console.log(user);
+  console.log(categories);
 
-  console.log("Fetched categories: ", categories);
-  console.log("Loading state: ", isLoading);
-  console.log("Error state: ", error);
 
   return (
     <Router>
@@ -28,15 +26,45 @@ const AppRoutes = () => {
       ) : (
         <></>
       )}
-
       <Routes>
+
+        {
+          user && Object.keys(user).length ? (
+            <>
+              <Route path="/products/:categoryName" element={<ProductListing />} />
+              <Route path="/cart" element={<CartItems />} />
+              <Route path="/" element={<ProductListing />} />
+              <Route path="*" element={<PageNotFound />} />
+            </>
+            ) : (
+              <>
+                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              </>
+            )
+    
+        }
+      </Routes>
+
+      {/* {
+       user && Object.keys(user).length ? (
+          <Header categories={categories?.data} isLoading={isLoading} />
+        ) : (
+          <></>
+        )
+      
+      } */}
+
+      {/* <Header categories={categories?.data} isLoading={isLoading} /> */}
+      {/* <Routes>
         <Route path="/products/:categoryName" element={<ProductListing />} />
         <Route path="/cart" element={<CartItems />} />
         <Route path="/" element={<ProductListing />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-      </Routes>
+      </Routes> */}
     </Router>
   );
 };
