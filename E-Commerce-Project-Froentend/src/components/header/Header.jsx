@@ -5,7 +5,11 @@ const Header = (props) => {
   return (
     <>
       <div className="header">
-        <Navbar categories={categories} isLoading={isLoading} />
+        <Navbar
+          className="navbar"
+          categories={categories}
+          isLoading={isLoading}
+        />
       </div>
     </>
   );

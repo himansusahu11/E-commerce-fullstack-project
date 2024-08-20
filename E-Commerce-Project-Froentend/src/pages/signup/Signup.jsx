@@ -2,8 +2,12 @@ import "./signup.css";
 import React, { useState } from "react";
 import axios from "axios";
 import urlConfig from "../../utils/urlConfig";
-
 import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Spinner from "react-bootstrap/Spinner";
 
 function Signup() {
   /*************state variables*************/
@@ -13,7 +17,6 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
   const handleSubmit = async () => {
@@ -38,83 +41,86 @@ function Signup() {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
-
         navigate("/login");
       }
     } catch (error) {
       console.log(error.message);
-      setErrMsg("User is not registred sucessfully");
-      setTimeout(() => {
-        setErrMsg("");
-      }, 2000);
+      toast.error("User is not registred sucessfully");
     } finally {
       setLoading(false);
     }
   };
 
-  if (loading) return <h1>Loading...</h1>;
   return (
-    <div className="signupscreen">
-      <div className="container">
-        <div className="innerContainer">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "20px",
-            }}
-          >
-            <div>
-              <i class="fas fa-arrow-circle-left fa-5x"></i>
-            </div>
-            <p>Signup</p>
+    <div className="signup-wrapper">
+      {loading ? (
+        <Spinner
+          animation="grow"
+          variant="danger"
+          style={{ width: "50px", height: "50px" }}
+        />
+      ) : (
+        <div className="s-wrapper-container">
+          <div className="form-box signup">
+            <form action="">
+              <h1>Signup</h1>
+              <div className="input-box">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <FaUser className="signupUser-icon" />
+              </div>
+              <div className="input-box">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <MdEmail className="signupUser-icon" />
+              </div>
+
+              <div className="input-box">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <FaLock className="signupUser-icon" />
+              </div>
+              <div className="input-box">
+                <input
+                  type="password"
+                  id="password"
+                  name="confirmPassword"
+                  placeholder="Your ConfirmPassword.."
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <FaLock className="signupUser-icon" />
+              </div>
+              <Link to="/login" className="link">
+                <span className="goto-login">Already have an account ?</span>
+              </Link>
+              <button
+                className="signup-btn"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Sign Up
+              </button>
+            </form>
           </div>
-
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your name.."
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-
-          <label for="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email.."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Your Password.."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <label for="password">Confirm Password</label>
-          <input
-            type="password"
-            id="password"
-            name="confirmPassword"
-            placeholder="Your ConfirmPassword.."
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <Link to="/login" className="link">
-            <span>Already have an account ?</span>
-          </Link>
-
-          <br />
-          <input type="submit" value="Sign up" onClick={handleSubmit} />
-          <div className={errMsg ? "errContainer" : ""}>{errMsg}</div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -4,13 +4,22 @@ import "./login.css";
 import urlConfig from "../../utils/urlConfig.js";
 import axios from "axios";
 import useAuth from "../../context/auth/useAuth.js";
+import { FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Spinner from "react-bootstrap/Spinner";
 
 function Login() {
+  // const showToast = () => {
+  //   toast.error("This is a test error toast");
+  // };
+
+  /////////////////////////////////////////
   /*****data for you backend***/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
 
@@ -32,22 +41,16 @@ function Login() {
       console.log(resp);
       console.log(data);
 
-      // const token = data.JWT;
-      // document.cookie = JWT=${token}; path=/; secure; httponly;
-
       if (resp.status === 200) {
         setEmail("");
         setPassword("");
-
         navigate("/");
         setAuth(data);
+        toast.success("User has been successfully logged in");
       }
     } catch (error) {
       console.log(error.message);
-      setErrMsg("User is not logedin sucessfully");
-      setTimeout(() => {
-        setErrMsg("");
-      }, 2000);
+      toast.error("User is not logged in successfully");
     } finally {
       setLoading(false);
     }
@@ -57,53 +60,56 @@ function Login() {
    * protected Routes : profile , orders , -> need your verification -> JWT
    *
    * **/
-  if (loading) return <h1>Loading.....</h1>;
-  return (
-    <div className="signinscreen">
-      <div className="container">
-        <div className="innerContainer">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "20px",
-              fontSize: "28px",
-              // backgroundColor: 'red',
-            }}
-          >
-            <div style={{ cursor: "pointer" }} onClick={() => {}}>
-              <i className="fas fa-arrow-circle-left fa-5x"></i>
-            </div>
-            <p>Sign In</p>
-          </div>
 
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="lname"
-            name="email"
-            placeholder="Your email.."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="lname"
-            name="password"
-            placeholder="Your Password.."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Link to="/signup" className="link">
-            <span>Create a new account ?</span>
-          </Link>
-          <br />
-          <input type="submit" value="Sign in" onClick={handleSubmit} />
-          <div className={errMsg ? "errContainer" : ""}>{errMsg}</div>
+  return (
+    <div className="login-wrapper">
+      {loading ? (
+        <Spinner
+          animation="grow"
+          variant="danger"
+          style={{ width: "50px", height: "50px" }}
+        />
+      ) : (
+        <div className="l-wrapper-container">
+          <div className="form-box login">
+            <form action="">
+              <h1>Login</h1>
+              <div className="input-box">
+                <input
+                  type="text"
+                  placeholder="Useremail"
+                  id="lname"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <MdEmail className="loginUser-icon" />
+              </div>
+              <div className="input-box">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="lname"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <FaLock className="loginUser-icon" />
+              </div>
+              <Link to="/signup" className="link">
+                <span className="create-acc">Create a new account ?</span>
+              </Link>
+              <button
+                className="login-btn"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Sign In
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

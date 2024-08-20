@@ -18,7 +18,6 @@ const AppRoutes = () => {
   console.log(user);
   console.log(categories);
 
-
   return (
     <Router>
       {user && Object.keys(user).length ? (
@@ -27,44 +26,24 @@ const AppRoutes = () => {
         <></>
       )}
       <Routes>
-
-        {
-          user && Object.keys(user).length ? (
-            <>
-              <Route path="/products/:categoryName" element={<ProductListing />} />
-              <Route path="/cart" element={<CartItems />} />
-              <Route path="/" element={<ProductListing />} />
-              <Route path="*" element={<PageNotFound />} />
-            </>
-            ) : (
-              <>
-                <Route path="/" element={<Login />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-              </>
-            )
-    
-        }
-      </Routes>
-
-      {/* {
-       user && Object.keys(user).length ? (
-          <Header categories={categories?.data} isLoading={isLoading} />
+        {user && Object.keys(user).length ? (
+          <>
+            <Route
+              path="/products/:categoryName"
+              element={<ProductListing />}
+            />
+            <Route path="/cart" element={<CartItems />} />
+            <Route path="/" element={<ProductListing />} />
+            <Route path="*" element={<PageNotFound />} />
+          </>
         ) : (
-          <></>
-        )
-      
-      } */}
-
-      {/* <Header categories={categories?.data} isLoading={isLoading} /> */}
-      {/* <Routes>
-        <Route path="/products/:categoryName" element={<ProductListing />} />
-        <Route path="/cart" element={<CartItems />} />
-        <Route path="/" element={<ProductListing />} />
-        <Route path="*" element={<PageNotFound />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-      </Routes> */}
+          <>
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </>
+        )}
+      </Routes>
     </Router>
   );
 };
