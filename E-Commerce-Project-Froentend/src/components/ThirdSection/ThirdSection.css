@@ -1,0 +1,74 @@
+.third-section-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.third-section-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Ensure it covers the whole section */
+  top: 0;
+  left: 0;
+  background: url(../../assets/img9.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.third-section-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+  z-index: 1; /* Ensure it sits above the background image */
+}
+
+.third-section-content {
+  position: absolute; /* Use absolute positioning to center content */
+  top: 50%; /* Move the top of the content to the vertical center */
+  left: 50%; /* Move the left of the content to the horizontal center */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Center the content both horizontally and vertically */
+  z-index: 2; /* Higher than the overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Center the text inside the content */
+  color: white; /* Make sure text is visible against the dark overlay */
+  padding: 1rem; /* Add some padding around the content */
+}
+
+.rating-wrapper {
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 0.5rem;
+}
+.third-star-icon {
+  color: #f0ad4e;
+}
+
+.third-section-content h4 {
+  font-size: 2.2142857142857rem;
+  font-weight: 700;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.third-section-content h6 {
+  margin-top: 2rem;
+  font-size: 0.78571428571429rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

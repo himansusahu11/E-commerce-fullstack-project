@@ -1,0 +1,42 @@
+.company-policy-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 96px;
+  padding-bottom: 92px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.company-policy-wrapper {
+  max-width: 80%;
+  display: flex;
+  justify-content: space-between; /* Space out evenly */
+  flex-wrap: wrap; /* Allow wrapping if needed */
+  gap: 4rem;
+}
+
+.cp-inner {
+  flex: 1; /* Make all cp-inner elements take the same width */
+  min-width: 200px; /* Set a minimum width to prevent it from becoming too small */
+  max-width: 280px; /* Set a maximum width to ensure it doesn’t get too wide */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+.cp-inner h4 {
+  font-size: 1.8rem;
+  line-height: 1.4rem;
+  font-weight: 700;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+.cp-inner p {
+  font-weight: 400;
+  color: #000;
+}

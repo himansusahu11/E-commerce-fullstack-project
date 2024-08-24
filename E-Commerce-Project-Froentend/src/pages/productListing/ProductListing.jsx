@@ -3,33 +3,34 @@ import useFetchData from "../../hooks/useFetchData";
 import Product from "../../components/product/Product";
 import Loader from "../../components/loader";
 import "./productListing.css";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
+import { ProductsContext } from "../../context/products/ProductsContext";
+import ShopHero from "../../components/ShopHero/ShopHero";
 
 const ProductListing = () => {
   const { categoryName } = useParams();
 
-  const url = categoryName
-    ? `http://fakestoreapi.com/products/category/${categoryName}`
-    : `https://fakestoreapi.com/products`;
+  // const url = categoryName
+  //   ? `http://fakestoreapi.com/products/category/${categoryName}`
+  //   : `https://fakestoreapi.com/products`;
+  // const { data: products, error, isLoading } = useFetchData(url, []);
 
-  const { data: products, error, isLoading } = useFetchData(url, []);
-
-  // useEffect(() => {
-  //   (async function () {
-  //     const res = await axios.get(url);
-  //     console.log("🚀 ~ res:", res);
-  //   })();
-  // }, []);
+  const { products, isLoading, error, setProductsUrl } =
+    useContext(ProductsContext);
+  useEffect(() => {
+    if (categoryName) {
+      setProductsUrl(
+        `https://fakestoreapi.com/products/category/${categoryName}`
+      );
+    } else {
+      setProductsUrl("https://fakestoreapi.com/products");
+    }
+  }, [categoryName, setProductsUrl]);
 
   return (
     <div>
-      {/* {isLoading && <Loader />}
-      {products &&
-        products.map((product, idx) => {
-          return <Product product={product} key={idx + 1} />;
-        })} */}
-
+      <ShopHero />
       {isLoading ? (
         <Loader />
       ) : (

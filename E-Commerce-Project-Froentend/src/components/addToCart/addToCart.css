@@ -1,37 +1,52 @@
 .add-to-cart {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .add,
 .remove {
-  background-color: #000;
+  background-color: #2196f3;
   color: white;
-  padding: 0.75rem;
-  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   border: none;
-  min-width: 3rem; /* Set a minimum width to avoid text distortion */
+  min-width: 3rem;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1; /* Allow button to grow to fit content */
 }
 
 .add:hover,
 .remove:hover {
-  background-color: rgb(
-    35,
-    32,
-    204
-  ); /* Hover background color for good contrast */
-  transform: scale(1.05);
+  background-color: #1976d2;
+  transform: scale(1.1);
 }
 
 .quantity {
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
   font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  min-width: 2rem;
+  text-align: center;
+}
+
+button.add {
+  background-color: #4caf50;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.4rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button.add:hover {
+  background-color: #388e3c;
 }

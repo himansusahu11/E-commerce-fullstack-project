@@ -1,0 +1,56 @@
+.most-popular-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 120px 24px 71px;
+  background-color: #f9f9f9;
+}
+
+.most-popular-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.most-popular-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.most-popular-heading h1 {
+  font-size: 4rem;
+  color: #333;
+  font-weight: 400;
+  font-family: "Pacifico", cursive;
+}
+
+.most-popular-product {
+  position: relative;
+}
+
+.r-button {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.r-button button {
+  font-size: 1.2rem;
+  padding: 0.2rem 0.8rem;
+  color: blue;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.r-button button:hover {
+  background-color: #2196f3; /* Blue background on hover */
+  color: white; /* White text on hover */
+  transform: scale(1.1); /* Slightly increase button size */
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+}
+
+.r-button button:focus {
+  outline: none; /* Remove default outline */
+}

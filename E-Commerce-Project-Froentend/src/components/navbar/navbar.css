@@ -1,54 +1,90 @@
 .nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  padding: 1rem;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
-.nav-items {
-  display: flex;
-  gap: 2rem;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 0.75rem 0;
+.nav.scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background when scrolled */
 }
 
-.nav-item {
-  list-style: none;
-  color: #fff;
-  font-size: 1.6rem;
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1224px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.nav-left a {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Space between items */
 }
 
 .nav-link {
-  list-style: none;
-  color: #fff;
-  font-size: 1.6rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
-  padding-bottom: 0.25rem;
-  text-transform: capitalize;
-  border-bottom: 3px solid transparent; /* Transparent border by default */
-  transition: border-bottom 0.3s; /* Add smooth transition */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .nav-link:hover {
-  border-bottom: 3px solid rgb(255, 255, 255); /* highlight on hover */
+  color: #f0f0f0; /* Lighten color on hover */
 }
 
-.active {
-  border-bottom: 3px solid rgb(255, 255, 255); /* highlight on hover */
+.catagory-select select {
+  border: none;
+  width: 8rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
+  margin-top: 3px;
+  border-radius: 4px; /* Rounded corners for the dropdown */
+  padding: 0.5rem; /* Padding inside the dropdown */
+  backdrop-filter: blur(
+    5px
+  ); /* Optional: adds a blur effect to the background */
+}
+
+.catagory-select select option {
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background for dropdown items */
+  color: white;
 }
 
 .cart-icon-container {
-  padding: 1rem;
-  border: 2px solid #fff;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border: 2px solid white;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+}
+
+.cart-icon-container:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
+  border-color: rgba(255, 255, 255, 0.6); /* Light border on hover */
 }
 
 .cart-icon {
-  color: #fff;
-  font-size: 1.25rem;
-  vertical-align: middle;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .cart-badge {
@@ -59,10 +95,10 @@
   background-color: orange;
   border-radius: 50%;
   padding: 0.25em;
-  font-size: 1.25rem;
-  width: 2em; /* Set the width to the same value as height */
-  height: 2em; /* Set the height to the same value as width */
-  display: flex; /* Use flexbox to center content */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  font-size: 1rem;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
