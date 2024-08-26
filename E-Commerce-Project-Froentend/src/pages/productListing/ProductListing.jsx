@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react";
 import axios from "axios";
 import { ProductsContext } from "../../context/products/ProductsContext";
 import ShopHero from "../../components/ShopHero/ShopHero";
+import urlConfig from "../../utils/urlConfig";
 
 const ProductListing = () => {
   const { categoryName } = useParams();
@@ -21,10 +22,14 @@ const ProductListing = () => {
   useEffect(() => {
     if (categoryName) {
       setProductsUrl(
-        `https://fakestoreapi.com/products/category/${categoryName}`
+        // `https://fakestoreapi.com/products/category/${categoryName}`
+        `http://localhost:5050/api/product?category=${categoryName}`
       );
     } else {
-      setProductsUrl("https://fakestoreapi.com/products");
+      setProductsUrl(
+        // `https://fakestoreapi.com/products`
+        `http://localhost:5050/api/product`
+      );
     }
   }, [categoryName, setProductsUrl]);
 

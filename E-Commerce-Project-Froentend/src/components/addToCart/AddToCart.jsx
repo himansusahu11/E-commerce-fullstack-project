@@ -3,7 +3,7 @@ import "./addToCart.css";
 
 const AddToCart = ({ product }) => {
   const { cart, addToCart, removeFromCart } = useCart();
-  const itemInCart = cart[product.id];
+  const itemInCart = cart[product._id];
   const quantity = itemInCart ? itemInCart.quantity : 0;
 
   return (
@@ -12,7 +12,7 @@ const AddToCart = ({ product }) => {
         <>
           <div
             onClick={() => {
-              removeFromCart(product.id);
+              removeFromCart(product._id);
             }}
             className="add remove"
           >

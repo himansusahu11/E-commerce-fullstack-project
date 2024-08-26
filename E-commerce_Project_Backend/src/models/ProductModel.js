@@ -42,7 +42,7 @@ const newProductSchemaRules = {
     // error handling
     required: [true, "kindly pass the name"],
     unique: [true, "product name should be unique"],
-    maxlength: [40, "Your product length is more than 40 characters"],
+    maxlength: [200, "Your product length is more than 200 characters"],
   },
   brand: {
     type: String,
@@ -105,15 +105,14 @@ const newProductSchemaRules = {
 const productSchema = new mongoose.Schema(newProductSchemaRules);
 
 let validCategories = [
-  "Electronics",
-  "Audio",
   "Clothing",
   "Accessories",
   "Shoes",
   "Men's Fashion",
-  "Fashion",
-  "Shoes",
-  "Sports",
+  "men's clothing",
+  "women's clothing",
+  "electronics",
+  "jewelery",
 ];
 
 productSchema.pre("save", function (next) {

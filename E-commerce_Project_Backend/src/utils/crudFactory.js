@@ -30,10 +30,7 @@ const getAllFactory = (ElementModel) => {
       if (elementDataStore.length == 0) {
         throw new Error("No elements are present");
       }
-      res.status(200).json({
-        status: "success",
-        message: elementDataStore,
-      });
+      res.status(200).json(elementDataStore);
     } catch (err) {
       res.status(404).json({
         status: "failure",
@@ -53,10 +50,7 @@ const getByIdFactory = (ElementModel) => {
       if (elementDetails == "no element found") {
         throw new Error(`element with ${id} not found`);
       } else {
-        res.status(200).json({
-          status: "successfull",
-          message: elementDetails,
-        });
+        res.status(200).json(elementDetails);
       }
     } catch (err) {
       res.status(404).json({

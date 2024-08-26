@@ -25,7 +25,6 @@ const getProductCategories = async (req, res) => {
 
 /***********products***********/
 ProductRouter.get("/categories", getProductCategories);
-ProductRouter.use(protectRouteMiddleWare);
 ProductRouter.post(
   "/",
   checkInput,
@@ -35,6 +34,7 @@ ProductRouter.post(
 );
 
 ProductRouter.get("/", getAllProductHandler);
+ProductRouter.use(protectRouteMiddleWare);
 ProductRouter.get("/:id", getProductById);
 ProductRouter.put(
   "/:id",
@@ -49,43 +49,90 @@ ProductRouter.delete(
 
 module.exports = ProductRouter;
 
+// async function getAllProductHandler(req, res) {
+//   try {
+//     // are done on the level of DB
+//     // -> find all the data
+//     // -> sort
+//     // -> select
+
+//     let query = req.query;
+//     let selectQuery = query.select;
+//     let sortQuery = query.sort;
+//     // console.log("selectParam", selectParam);
+//     // console.log("sortParam", sortParam);
+//     // make a find query -> searching for the product
+//     let queryResPromise = ProductModel.find();
+//     // sort the entries
+//     if (sortQuery) {
+//       // "price inc"
+//       let order = sortQuery.split(" ")[1];
+//       let sortParam = sortQuery.split(" ")[0];
+//       // console.log("order",order,"sortParam",sortParam);
+//       // applying this logic for inc and dec
+//       if (order == "inc") {
+//         queryResPromise = queryResPromise.sort(sortParam);
+//       } else {
+//         queryResPromise = queryResPromise.sort(-sortParam);
+//       }
+//     }
+//     if (selectQuery) {
+//       queryResPromise = queryResPromise.select(selectQuery);
+//     }
+//     // when find and sort both are done
+//     const result = await queryResPromise;
+
+//     res.status(200).json(result);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({
+//       message: err.message,
+//       status: "failure",
+//     });
+//   }
+
+//   // sorting -> increarsing
+//   // selecting -> (name,price)
+// }
+
 async function getAllProductHandler(req, res) {
   try {
-    // are done on the level of DB
-    // -> find all the data
-    // -> sort
-    // -> select
-
+    // Get query parameters
     let query = req.query;
     let selectQuery = query.select;
     let sortQuery = query.sort;
-    // console.log("selectParam", selectParam);
-    // console.log("sortParam", sortParam);
-    // make a find query -> searching for the product
+    let categoryQuery = query.category; // Get category from query parameters
+
+    // Initialize query result promise
     let queryResPromise = ProductModel.find();
-    // sort the entries
+
+    // Filter by category if provided
+    if (categoryQuery) {
+      queryResPromise = ProductModel.find({ categories: categoryQuery });
+    }
+
+    // Sort the entries if a sort query is provided
     if (sortQuery) {
-      // "price inc"
       let order = sortQuery.split(" ")[1];
       let sortParam = sortQuery.split(" ")[0];
-      // console.log("order",order,"sortParam",sortParam);
-      // applying this logic for inc and dec
-      if (order == "inc") {
+
+      if (order === "inc") {
         queryResPromise = queryResPromise.sort(sortParam);
       } else {
-        queryResPromise = queryResPromise.sort(-sortParam);
+        queryResPromise = queryResPromise.sort(`-${sortParam}`);
       }
     }
+
+    // Select specific fields if a select query is provided
     if (selectQuery) {
       queryResPromise = queryResPromise.select(selectQuery);
     }
-    // when find and sort both are done
+
+    // Execute the query and get the result
     const result = await queryResPromise;
 
-    res.status(200).json({
-      message: result,
-      status: "success",
-    });
+    // Send response
+    res.status(200).json(result);
   } catch (err) {
     console.log(err);
     res.status(500).json({
@@ -93,7 +140,4 @@ async function getAllProductHandler(req, res) {
       status: "failure",
     });
   }
-
-  // sorting -> increarsing
-  // selecting -> (name,price)
 }

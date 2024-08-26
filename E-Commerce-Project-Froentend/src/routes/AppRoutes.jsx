@@ -12,13 +12,19 @@ import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import { useContext } from "react";
+import { ProductsContext } from "../context/products/ProductsContext";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
+import urlConfig from "../utils/urlConfig";
 const AppRoutes = () => {
+  const { products } = useContext(ProductsContext);
+
   const {
     data: categories,
     error,
     isLoading,
-  } = useFetchData("http://localhost:5050/api/product/categories", []);
+  } = useFetchData(urlConfig.CATEGORIES_URL, []);
   const { user } = useAuth();
   console.log(user);
   console.log(categories);
@@ -42,6 +48,10 @@ const AppRoutes = () => {
               element={<ProductListing />}
             />
             <Route path="/cart" element={<CartItems />} />
+            <Route
+              path="/products/details/:productId"
+              element={<ProductDetails products={products} />}
+            />
             <Route path="/" element={<ProductListing />} />
             <Route path="*" element={<PageNotFound />} />
           </>

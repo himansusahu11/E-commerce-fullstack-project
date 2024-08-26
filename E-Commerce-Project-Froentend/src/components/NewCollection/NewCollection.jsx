@@ -10,7 +10,7 @@ const NewCollection = ({ products }) => {
           <h1>Newest Collection</h1>
         </div>
         <div className="new-collection-product">
-          {products.slice(14, 18).map((product, index) => {
+          {products.slice(4, 8).map((product, index) => {
             return <Product key={index} product={product} />;
           })}
         </div>
