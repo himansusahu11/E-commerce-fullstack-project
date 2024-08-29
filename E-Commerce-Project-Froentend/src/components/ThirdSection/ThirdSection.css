@@ -1,4 +1,4 @@
-.third-section-container {
+/* .third-section-container {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -11,7 +11,7 @@
 .third-section-wrapper {
   width: 100%;
   height: 100%;
-  position: absolute; /* Ensure it covers the whole section */
+  position: absolute; 
   top: 0;
   left: 0;
   background: url(https://i.imgur.com/aAtglIt.jpg) no-repeat center center fixed;
@@ -25,26 +25,26 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-  z-index: 1; /* Ensure it sits above the background image */
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1; 
 }
 
 .third-section-content {
-  position: absolute; /* Use absolute positioning to center content */
-  top: 50%; /* Move the top of the content to the vertical center */
-  left: 50%; /* Move the left of the content to the horizontal center */
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
   transform: translate(
     -50%,
     -50%
-  ); /* Center the content both horizontally and vertically */
-  z-index: 2; /* Higher than the overlay */
+  ); 
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center; /* Center the text inside the content */
-  color: white; /* Make sure text is visible against the dark overlay */
-  padding: 1rem; /* Add some padding around the content */
+  text-align: center; 
+  color: white; 
+  padding: 1rem; 
 }
 
 .rating-wrapper {
@@ -71,4 +71,120 @@
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+} */
+.third-section-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.third-section-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(https://i.imgur.com/aAtglIt.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.third-section-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+  z-index: 1;
+}
+
+.third-section-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  width: 80%; /* Set a width to prevent content from stretching too much */
+  max-width: 800px; /* Limit the max width of the content */
+}
+
+.rating-wrapper {
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 0.5rem;
+}
+
+.third-star-icon {
+  color: #f0ad4e;
+}
+
+.third-section-content h4 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  text-transform: capitalize;
+  line-height: 1.5;
+}
+
+.third-section-content h6 {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .third-section-content {
+    width: 90%; /* Adjust width for tablets */
+    padding: 1.5rem;
+  }
+
+  .third-section-content h4 {
+    font-size: 1.8rem; /* Smaller heading for tablets */
+    line-height: 1.4;
+  }
+
+  .third-section-content h6 {
+    font-size: 0.75rem; /* Adjust subtitle font size */
+  }
+
+  .rating-wrapper {
+    margin-bottom: 1.5rem; /* Adjust spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .third-section-content {
+    width: 95%; /* Maximize width for small screens */
+    padding: 1rem;
+  }
+
+  .third-section-content h4 {
+    font-size: 1.5rem; /* Smaller heading for mobile */
+    line-height: 1.3;
+  }
+
+  .third-section-content h6 {
+    font-size: 0.7rem; /* Smaller subtitle for mobile */
+  }
+
+  .rating-wrapper {
+    margin-bottom: 1rem; /* Adjust spacing */
+  }
 }

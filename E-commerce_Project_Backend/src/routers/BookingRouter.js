@@ -6,12 +6,15 @@ const { protectRouteMiddleWare } = require("../controllers/AuthController");
 
 const Razorpay = require("razorpay");
 const UserModel = require("../models/UserModel");
+
 const { PUBLIC_KEY, PRIVATE_KEY, WEBHOOK_SECRET_KEY } = process.env;
 console.log(PRIVATE_KEY, WEBHOOK_SECRET_KEY);
 const razorpayInstance = new Razorpay({
   key_id: PUBLIC_KEY,
   key_secret: PRIVATE_KEY,
 });
+
+// console.log(razorpayInstance);
 
 const initialBookingController = async (req, res) => {
   try {
@@ -74,6 +77,7 @@ const initialBookingController = async (req, res) => {
     });
   }
 };
+
 const getAllBookings = async (req, res) => {
   try {
     // write the booking logic here
@@ -103,7 +107,7 @@ const verifyPaymentController = async (req, res) => {
     const freshSignature = shasum.digest("hex");
     const razorPaySign = req.headers["x-razorpay-signature"];
 
-    console.log(freshSignature, razorPaySign);
+    console.log("signature" + freshSignature, razorPaySign);
     if (freshSignature == razorPaySign) {
       // ok
       // write the logic here
@@ -132,7 +136,6 @@ const verifyPaymentController = async (req, res) => {
 // This will be done during frontend integration
 
 BookingRouter.use(protectRouteMiddleWare);
-
 BookingRouter.post("/:productId", initialBookingController);
 BookingRouter.post("/verify", protectRouteMiddleWare, verifyPaymentController);
 BookingRouter.get("/", getAllBookings);

@@ -1,0 +1,151 @@
+.product-details-heading {
+  height: 5rem;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.product-details-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: #f4f4f4;
+}
+
+.product-details-wrapper {
+  max-width: 1240px;
+  width: 100%;
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.product-details-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.product-details-content-left {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-details-content-left img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-details-content-right {
+  flex: 1;
+  padding: 2rem;
+  margin-top: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details-content-right h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.product-details-content-right h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+
+.product-details-content-right p {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.product-details-size-btn {
+  display: flex;
+  gap: 1rem;
+
+  align-items: center;
+}
+
+.product-details-size-btn button {
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid #333;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.product-details-size-btn button:hover {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.product-details-size-btn button:active {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+.product-details-size-btn button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.checkout-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.checkout-btn button {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  border: 1px solid #333;
+  background-color: #fff;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.checkout-btn button:hover {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+@media (max-width: 768px) {
+  .product-details-content {
+    flex-direction: column;
+  }
+
+  .product-details-content-left,
+  .product-details-content-right {
+    padding: 1rem;
+  }
+
+  .product-details-heading {
+    font-size: 1.5rem;
+  }
+}

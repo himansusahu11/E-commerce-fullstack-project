@@ -96,3 +96,23 @@
 .second-section-content button {
   text-align: left;
 }
+
+@media (max-width: 1200px) {
+  .second-section-content {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .second-section-content h3 {
+    font-size: 2.5rem;
+  }
+
+  .second-section-content p {
+    font-size: 1.5rem;
+  }
+
+  .second-section-content button {
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+  }
+}

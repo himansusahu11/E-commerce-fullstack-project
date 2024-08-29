@@ -72,18 +72,91 @@
   background-color: white; /* Darker shade on hover */
   color: black;
 }
+
 .hero-casual {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   letter-spacing: 2px;
   font-size: 0.78571428571429rem;
 }
-.hero-content .hero-casual {
-  margin-top: 20px;
-}
+
 .hero-heading {
-  font-weight: 400;
-  font-family: "Pacifico", cursive;
+  font-weight: 700;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
   line-height: 1.2em;
-  font-size: 4rem;
+  font-size: 5.3571428571429rem;
+  text-transform: capitalize;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hero-heading {
+    font-size: 4rem;
+  }
+
+  .hero-content button {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-heading {
+    font-size: 3rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .hero-content button {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+
+  .hero-content button {
+    font-size: 0.5rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.7rem;
+  }
+
+  .hero-content button {
+    font-size: 0.5rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-heading {
+    font-size: 1.75rem; /* Smaller font size for very small screens */
+  }
+
+  .hero-content p {
+    font-size: 0.6rem; /* Adjusted font size for readability */
+  }
+
+  .hero-content button {
+    font-size: 0.5rem; /* Slightly smaller button text */
+    padding: 0.2rem 0.3rem; /* Reduced padding for small screens */
+  }
 }
